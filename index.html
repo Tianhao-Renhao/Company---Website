@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TIANHAO-RENHAO S.L</title>
+  <style>
+    body { font-family: sans-serif; margin: 0; padding: 0; background: #f9f9f9; color: #222; }
+    header { background: linear-gradient(135deg, #4CAF50, #2e7d32); color: white; padding: 60px 20px; text-align: center; }
+    header img { max-height: 80px; }
+    h1 { margin: 20px 0 10px; font-size: 2em; }
+    section { padding: 40px 20px; max-width: 1000px; margin: auto; }
+    h2 { color: #2e7d32; }
+    .card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); margin-bottom: 20px; }
+    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+    figure { margin: 0; border-radius: 12px; overflow: hidden; box-shadow: 0 6px 16px rgba(0,0,0,.1); background: #fff; }
+    img { width: 100%; height: 180px; object-fit: cover; display: block; }
+    figcaption { padding: 10px; background: #4CAF50; color: white; text-align: center; font-weight: bold; }
+    iframe { width: 100%; height: 350px; border: none; border-radius: 12px; }
+    footer { text-align: center; padding: 30px; background: #eee; color: #444; font-size: 0.9em; margin-top: 40px; }
+    .lang-toggle { text-align: center; margin: 20px 0; }
+    .lang-toggle button { margin: 0 5px; padding: 6px 16px; border: none; border-radius: 6px; background: #2e7d32; color: white; cursor: pointer; }
+    .lang-toggle button.active { background: #1b5e20; }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="assets/logo.png" alt="Company Logo" />
+  <h1>TIANHAO-RENHAO S.L</h1>
+  <p data-zh="致力于为欧洲提供新鲜健康的果蔬" data-en="Providing fresh and healthy fruits and vegetables for sale in Europe">致力于为欧洲提供新鲜健康的果蔬</p>
+</header>
+
+<div class="lang-toggle">
+  <span>语言 / Language:</span>
+  <button onclick="setLang('zh')" id="btn-zh">中文</button>
+  <button onclick="setLang('en')" id="btn-en">English</button>
+</div>
+
+<section>
+  <h2 data-zh="关于我们" data-en="About Us">关于我们</h2>
+  <div class="card">
+    <p data-zh="TIANHAO RENHAO S.L.总部位于西班牙巴塞罗那，是一家专注于食品零售和国际农产品贸易的综合型企业。公司自成立以来，致力于为欧洲市场提供高质量、可持续的产品与服务。" 
+       data-en="TIANHAO RENHAO S.L., headquartered in Barcelona, Spain, is a comprehensive enterprise specializing in food retail and international agricultural product trade. Since its establishment, the company has been dedicated to providing high-quality, sustainable products and services to the European market.">
+      TIANHAO RENHAO S.L.总部位于西班牙巴塞罗那，是一家专注于食品零售和国际农产品贸易的综合型企业。公司自成立以来，致力于为欧洲市场提供高质量、可持续的产品与服务。
+    </p>
+  </div>
+</section>
+
+<section>
+  <h2 data-zh="产品与服务" data-en="Products & Services">产品与服务</h2>
+  <div class="gallery">
+    <figure><img src="assets/products/cucumbers.jpg" alt="Cucumbers"><figcaption data-zh="黄瓜" data-en="Cucumbers">黄瓜</figcaption></figure>
+    <figure><img src="assets/products/durian.jpg" alt="Durian"><figcaption data-zh="榴莲" data-en="Durian">榴莲</figcaption></figure>
+    <figure><img src="assets/products/fruits.jpg" alt="Mixed Fruits"><figcaption data-zh="综合水果" data-en="Mixed Fruits">综合水果</figcaption></figure>
+    <figure><img src="assets/products/strawberries.jpg" alt="Strawberries"><figcaption data-zh="草莓" data-en="Strawberries">草莓</figcaption></figure>
+    <figure><img src="assets/products/tomatoes.jpg" alt="Tomatoes"><figcaption data-zh="番茄" data-en="Tomatoes">番茄</figcaption></figure>
+    <figure><img src="assets/products/vegetables.jpg" alt="Mixed Vegetables"><figcaption data-zh="综合蔬菜" data-en="Mixed Vegetables">综合蔬菜</figcaption></figure>
+  </div>
+</section>
+
+<section>
+  <h2 data-zh="联系我们" data-en="Contact">联系我们</h2>
+  <div class="card">
+    <p><strong data-zh="电话" data-en="Phone">电话</strong>: 0034 935 562 560</p>
+    <p><strong data-zh="邮箱" data-en="Email">邮箱</strong>: tianhaorenhao2000@gmail.com</p>
+    <p><strong data-zh="地址" data-en="Address">地址</strong>: Pabellon E, 5060-5061, Mercabarna, 08040 Barcelona</p>
+  </div>
+  <iframe src="https://www.google.com/maps?q=Pabellon%20E,%205060-5061,%20Mercabarna,%2008040%20Barcelona&output=embed"></iframe>
+</section>
+
+<footer>
+  <p>&copy; 2025 TIANHAO-RENHAO S.L. All rights reserved.</p>
+</footer>
+
+<script>
+function setLang(lang) {
+  localStorage.setItem('lang', lang);
+  document.querySelectorAll('[data-zh]').forEach(el => {
+    el.textContent = lang === 'zh' ? el.getAttribute('data-zh') : el.getAttribute('data-en');
+  });
+  document.getElementById('btn-zh').classList.toggle('active', lang === 'zh');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+const savedLang = localStorage.getItem('lang') || 'zh';
+setLang(savedLang);
+</script>
+
+</body>
+</html>
